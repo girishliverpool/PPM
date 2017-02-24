@@ -16,6 +16,11 @@ namespace PPM.Service.Services
             this.transactionDAL = transactionDAL;
         }
 
+        public TransactionService()
+        {
+
+        }
+
         public bool BulkInsert(List<Dto.TransactionDetail> lstTransactions)
         {
             bool retval = false;

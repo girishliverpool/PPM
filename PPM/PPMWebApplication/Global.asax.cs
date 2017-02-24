@@ -6,11 +6,14 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using PPM.DependencyInjection;
+using Ninject;
+using System.Reflection;
 
 namespace PPMWebApplication
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
             DISetup.Configuration();
@@ -19,6 +22,8 @@ namespace PPMWebApplication
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
+
     }
 }
