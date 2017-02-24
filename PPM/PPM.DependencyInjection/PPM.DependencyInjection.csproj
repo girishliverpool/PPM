@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEEB3456-D89C-41DF-BA80-0B755CFC4022}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPM.DependencyInjection</RootNamespace>
+    <AssemblyName>PPM.DependencyInjection</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>C:\BSI Products\Delegate Sites\Dependencies\3rdParty\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Framework\FrameworkSetup.cs" />
+    <Compile Include="Ninject\KernelContainer.cs" />
+    <Compile Include="Ninject\ServiceModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StuctureMap\DISetup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PPM.DataLayer.Interfaces\PPM.DataLayer.Interfaces.csproj">
+      <Project>{fe031523-6d3f-4eff-b71b-83dc044e84bb}</Project>
+      <Name>PPM.DataLayer.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPM.DataLayer\PPM.DataLayer.csproj">
+      <Project>{afa4003c-0b27-4e5d-9fc9-31b11be20f37}</Project>
+      <Name>PPM.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPM.Dto\PPM.Dto.csproj">
+      <Project>{aab08162-0470-4e92-a91b-b22f4f3ba6ea}</Project>
+      <Name>PPM.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPM.ServiceInterfaces\PPM.ServiceInterfaces.csproj">
+      <Project>{58b0059b-bfb5-4dac-82bd-eb131d03976a}</Project>
+      <Name>PPM.ServiceInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPM.Service\PPM.Service.csproj">
+      <Project>{ec4f7342-8450-4cab-a105-582cbb55e55e}</Project>
+      <Name>PPM.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

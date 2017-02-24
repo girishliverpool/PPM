@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <br /><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label for="file" class="control-label" id="filename" name="filename">Filename:</label>
+        </div>
+        <div class="col-sm-5">
+            <input type="text" id="txtFileName" class="form-control" />
+        </div>
+    </div>
+    <br/><br/>
+    <div class="form-group">
+        <div class="col-sm-5 col-sm-offset-3">
+            <input type="file" id="fileUpload" name="fileUpload" onchange="validation()" />
+        </div>
+
+    </div>
+    <br /><br />
+    <div class="form-group">
+        <div class="col-sm-5  col-sm-offset-3">
+            <input type="submit" value="Upload" class="btn" />
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-sm-12">
+           <span class="text-success"> @ViewBag.Message</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <span class="text-danger">@Html.Raw(@ViewBag.ValidationError)</span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function validation() {
+            var fileName = (document.getElementById('fileUpload').value).substring(12);
+            var csv = /(\.csv)$/i
+            var xlsx = /(\.xlsx)$/i;
+
+            if (csv.exec(fileName)) {
+                document.getElementById('txtFileName').value = document.getElementById('fileUpload').value.substring(12);
+            }
+            else if (xlsx.exec(fileName)) {
+                document.getElementById('txtFileName').value = document.getElementById('fileUpload').value.substring(12);
+            }
+            else {
+                document.getElementById('fileUpload').value = document.getElementById('txtFileName').value = "";
+                alert("file is not supported!");
+            }
+        }
+    </script>
+
+</form>
